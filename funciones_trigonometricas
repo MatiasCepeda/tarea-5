@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class trigonometric_funtions {
+    double angulo, angulo2;
+  public:
+    void valor_angulo(double);
+    
+    double valor_sin () {return angulo - pow(angulo,3)/6 + pow(angulo,5)/120 - pow(angulo,7)/5040 + pow(angulo,9)/362880;}
+    
+    double valor_cos () {return 1 - pow(angulo,2)/2 + pow(angulo,4)/24 - pow(angulo,6)/720 + pow(angulo,8)/40320;}
+    
+    double valor_tan () {return angulo + pow(angulo,3)/3 + 2*pow(angulo,5)/15 + 17*pow(angulo,7)/315 + 62*pow(angulo,9)/2835;}
+    
+    double valor_sec () {return 1 + pow(angulo,2)/2 + 5*pow(angulo,4)/24 + 61*pow(angulo,6)/720 + 277*pow(angulo,8)/8064;}
+
+    double valor_cosec () {return 1/angulo + angulo/6 + 7*pow(angulo,3)/360 + 31*pow(angulo,5)/15120 + 127*pow(angulo,7)/604800;}
+};
+
+void trigonometric_funtions::valor_angulo (double valor){
+  if (abs(valor)<M_PI/2) {
+    angulo=valor;
+  }
+  else if (abs(valor)<M_PI)
+  {
+    angulo2=valor;
+  }
+  
+}
+
+int main () {
+  trigonometric_funtions angle;
+  angle.valor_angulo(M_PI/8);
+  cout << "El valor del seno aproximado es: " << angle.valor_sin() << endl;
+  cout << "El valor del coseno aproximado es: " << angle.valor_cos() << endl;
+  cout << "El valor de la tangente aproximado es: " << angle.valor_tan() << endl;
+  cout << "El valor de la secante aproximado es: " << angle.valor_sec() << endl;
+  cout << "El valor de la cosecante aproximado es: " << angle.valor_cosec() << endl;
+  return 0;
+}
