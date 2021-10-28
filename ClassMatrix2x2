@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Matrix {
+    public:
+        Matrix ();//1.
+        Matrix (const Matrix& otherMatrix);//2.
+        Matrix (double c);//2.
+        
+        double m11, m12, m21, m22;
+
+        void values (double, double, double, double);//3.
+        double determinat () {return m11*m22 - m21*m12;}//4.
+
+};
+
+Matrix::Matrix () {
+    m11 = 0;
+    m12 = 0;
+    m21 = 0;
+    m22 = 0;
+}
+
+Matrix::Matrix (const Matrix& otherMatrix) {
+    m11 = otherMatrix.m11;
+    m12 = otherMatrix.m12;
+    m21 = otherMatrix.m21;
+    m22 = otherMatrix.m22;
+}
+
+void Matrix::values (double a11, double a12, double a21, double a22) {
+    m11 = a11;
+    m12 = a12;
+    m21 = a21;
+    m22 = a22;
+}
